@@ -22,4 +22,4 @@ Currently to be run as:
 
 
 ### Credits
-Adapted from [this tutorial]([url](https://towardsdatascience.com/audio-deep-learning-made-simple-sound-classification-step-by-step-cebc936bbe5)) by Ketan Doshi.
+Adapted from [this tutorial](https://towardsdatascience.com/audio-deep-learning-made-simple-sound-classification-step-by-step-cebc936bbe5) by Ketan Doshi.
