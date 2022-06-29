@@ -19,3 +19,7 @@ Currently to be run as:
 
 `python CNN_pt.py [dataset location] test [name of test run]`
 
+
+
+### Credits
+Adapted from [this tutorial]([url](https://towardsdatascience.com/audio-deep-learning-made-simple-sound-classification-step-by-step-cebc936bbe5)) by Ketan Doshi.
