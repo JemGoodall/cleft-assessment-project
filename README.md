@@ -17,5 +17,5 @@ Train and test (full_traintest.py):
 - Train and save results
 - Test and save results
 
-Bonus! Finetuning pyannote:
-- (NEED TO ADD FILE TO GIT)
+Bonus! Finetuning pyannote for speaker diarization:
+- (Todo: upload these files to git)
