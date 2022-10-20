@@ -1,25 +1,21 @@
 # cleft-assessment-project
-The code for my Msc thesis on automatic cleft-palate resonance assessment using CNNs. 
+The code for my Msc thesis on automatic cleft-palate hypernasality assessment using CNN and LRCN models. 
+LRCNs (Long short-term recurrent convolutional networks) combine CNN feature extraction with LSTM sequential processing, making them appropriate for use in speech classification tasks with spectrogram input. 
 
---- A work in progress ---
+--- A more-or-less finished project (needs tidying) ---
 
-Current pipeline plan (and where it's located):
-- Exactract audio from video (TODO)
-- (Speaker diarization) (TODO)
-- (Extract vowels/words) (partial - trimmer.py)
-- Get meta data (meta_data.py)
-- Processing audio (resample/channels/shift etc) (pre-process.py)
-- (Remove noise) (TODO)
-- Create spectrogram + labels (pre-process.py)
-- (Mask) (pre-process.py)
-- Create model and input data to CNN (CNN_pt.py)
-- Print classification accuracy results! (CNN_pt.py)
+Data Preprocessing:
+- Extract audio from video and normalise dB (extract_audio.sh, normalise_db.sh)
+- Speaker diarization (diarization.py)
+- Split into x ms segments and remove semgents with low HNR (preprocess.py)
+- Create spectrograms (make_spec_data.py)
 
-Currently to be run as:
+Train and test (full_traintest.py):
+- Create model (either CNN or LRNC, in model.py)
+- Split data depending on patient input, or random. 
+- Create dataloaders depending on model (in make_dataset.py)
+- Train and save results
+- Test and save results
 
-`python CNN_pt.py [dataset location] test [name of test run]`
-
-
-
-### Credits
-Adapted from [this tutorial](https://towardsdatascience.com/audio-deep-learning-made-simple-sound-classification-step-by-step-cebc936bbe5) by Ketan Doshi.
+Bonus! Finetuning pyannote:
+- (NEED TO ADD FILE TO GIT)
