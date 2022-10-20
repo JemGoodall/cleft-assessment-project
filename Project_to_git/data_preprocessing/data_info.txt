@@ -1,0 +1,19 @@
+DIR = audio_83
+num of files 81
+avg duration in sec = 71.5500082304527
+avg sr = 48000.0
+
+DIR = audio_71
+num of files 69
+avg duration in sec = 60.197468599033805
+avg sr = 48000.0#
+
+DIR = audio_F1
+num of files 75
+avg duration in sec = 66.21719111111112
+avg sr = 48000.0
+
+DIR = audio_F2
+num of files 75
+avg duration in sec = 66.43848888888888
+avg sr = 48000.0

@@ -1,0 +1,49 @@
+Train patients = 32, Test patients = 9
+Train: [1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 21, 22, 23, 25, 26, 27, 28, 30, 32, 33, 34, 36, 37, 38, 40, 41], 
+Test = [3, 4, 18, 20, 24, 29, 31, 35, 39]
+Num train samples = 8140, Num test samples = 1948
+normalising globally. Mean and std = (tensor(-16.6036), tensor(16.0345))
+Model is on: cuda:0
+Shape of sample: torch.Size([1, 64, 38]) = (seq_len), num_channels, freq_bins, num_sftfTraining model: epochs = 100, batch size = 64, lr = 0.1, norm_type = global, class weights = True. Seed = 6. LRCN = False (input_dims = 64, hidden_dims = 128), dropout_rate = 0.4. Maxlr = /10 10088 audio files from ../spec_data/200_f350_h116_noSplit/all_data/
+================================================================
+class weights applied: [1.7868, 3.8227, 1.5828, 1.138, 1.0]
+================================================================ 
+ TRAINING CNN_fold1
+================================================================
+Epoch: 10/100 | Loss: 1.138, Accuracy: 0.573 | Val_loss: 1.209, Val_accuracy: 0.445
+Epoch: 20/100 | Loss: 0.953, Accuracy: 0.634 | Val_loss: 1.042, Val_accuracy: 0.546
+Epoch: 30/100 | Loss: 0.814, Accuracy: 0.682 | Val_loss: 1.501, Val_accuracy: 0.353
+Epoch: 40/100 | Loss: 0.683, Accuracy: 0.731 | Val_loss: 1.110, Val_accuracy: 0.545
+Epoch: 50/100 | Loss: 0.584, Accuracy: 0.775 | Val_loss: 1.035, Val_accuracy: 0.605
+Epoch: 60/100 | Loss: 0.480, Accuracy: 0.813 | Val_loss: 1.153, Val_accuracy: 0.611
+Epoch: 70/100 | Loss: 0.421, Accuracy: 0.834 | Val_loss: 0.890, Val_accuracy: 0.654
+Epoch: 80/100 | Loss: 0.388, Accuracy: 0.846 | Val_loss: 0.920, Val_accuracy: 0.670
+Epoch: 90/100 | Loss: 0.333, Accuracy: 0.873 | Val_loss: 0.887, Val_accuracy: 0.711
+Epoch: 100/100 | Loss: 0.295, Accuracy: 0.890 | Val_loss: 0.887, Val_accuracy: 0.709
+----- Finished Training -----
+Time total:     11.23 min
+Time per epoch:  0.11 min
+Writing results to log_train.csv
+Writing results to log_train_summaries.csv
+================================================================ 
+ INFERENCE CNN_fold1
+================================================================
+Unaltered results: test accuracy = 0.43, macro f1 = 0.3601157069206238
+              precision    recall  f1-score   support
+
+     class 0       0.44      0.97      0.61       178
+     class 1       0.33      0.13      0.19       145
+     class 2       0.89      0.72      0.80       472
+     class 3       0.76      0.78      0.77       429
+     class 4       0.88      0.83      0.86       724
+
+    accuracy                           0.75      1948
+   macro avg       0.66      0.69      0.64      1948
+weighted avg       0.78      0.75      0.75      1948
+
+----- Acc and F1 scores  -----
+Test accuracy and macro f1 per frame: 0.75 0.64, Total test items: 1948
+MAE for files: 0.5663479269621153, Total num of files: 27
+Writing results to log_test_summaries.csv
+Writing FULL results to final_exp/CNN_fold1/results_CNN_fold1_perFile.csv
+Writing FULL results to final_exp/CNN_fold1/results_CNN_fold1.csv
