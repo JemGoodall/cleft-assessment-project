@@ -1,5 +1,5 @@
 # cleft-assessment-project
-The code for my Msc thesis on automatic cleft-palate hypernasality assessment using CNN and LRCN models. 
+The code for my MSc thesis on automatic cleft-palate hypernasality assessment using CNN and LRCN models. 
 LRCNs (Long short-term recurrent convolutional networks) combine CNN feature extraction with LSTM sequential processing, making them appropriate for use in speech classification tasks with spectrogram input. 
 
 --- A more-or-less finished project (needs tidying) ---
