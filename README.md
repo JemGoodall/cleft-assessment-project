@@ -21,4 +21,5 @@ Bonus! Finetuning pyannote for speaker diarization:
 - Finetune pyannote using UXTD data (train_pyannote.py)
 - Test models (test_pyannote.py)
 - Plot various graphs for comparison (plot_pyannote.py)
+
 *UXTD data not included* 
