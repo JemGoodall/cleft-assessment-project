@@ -1,9 +1,7 @@
 from pyannote.database import FileFinder
 from pyannote.database import get_protocol
-from pyannote.core import Segment
 from pyannote.audio.tasks import Segmentation
 from pyannote.core import notebook
-from pyannote.core.notebook import repr_feature, repr_segment, repr_timeline, repr_annotation
 from pyannote.audio import Model
 from pyannote.audio import Inference
 from copy import deepcopy
