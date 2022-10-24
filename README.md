@@ -18,4 +18,7 @@ Train and test (full_traintest.py):
 - Test and save results
 
 Bonus! Finetuning pyannote for speaker diarization:
-- (Todo: upload these files to git)
+- Finetune pyannote using UXTD data (train_pyannote.py)
+- Test models (test_pyannote.py)
+- Plot various graphs for comparison (plot_pyannote.py)
+*UXTD data not included* 
