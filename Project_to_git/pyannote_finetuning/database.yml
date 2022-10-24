@@ -1,0 +1,79 @@
+---
+Protocols:
+  MyDatabase:
+    SpeakerDiarization:
+      MyProtocol:
+        train:
+            uri: lists/train.lst
+            annotation: rttms/train.rttm
+            annotated: uems/train.uem
+        development:
+          uri: lists/development.lst
+          annotation: rttms/development.rttm
+          annotated: uems/development.uem
+        test:
+          uri: lists/test.lst
+          annotation: rttms/test.rttm
+          annotated: uems/test.uem
+
+Databases:
+  MyDatabase:
+    - audio/01M/{uri}.wav
+    - audio/02M/{uri}.wav
+    - audio/03F/{uri}.wav
+    - audio/04M/{uri}.wav
+    - audio/05M/{uri}.wav
+    - audio/06F/{uri}.wav
+    - audio/07F/{uri}.wav
+    - audio/08M/{uri}.wav
+    - audio/09F/{uri}.wav
+    - audio/10F/{uri}.wav
+    - audio/11M/{uri}.wav
+    - audio/12M/{uri}.wav
+    - audio/13F/{uri}.wav
+    - audio/14M/{uri}.wav
+    - audio/15M/{uri}.wav
+    - audio/16F/{uri}.wav
+    - audio/17M/{uri}.wav
+    - audio/18F/{uri}.wav
+    - audio/19M/{uri}.wav
+    - audio/20M/{uri}.wav
+    - audio/21F/{uri}.wav
+    - audio/22M/{uri}.wav
+    - audio/23F/{uri}.wav
+    - audio/24F/{uri}.wav
+    - audio/25M/{uri}.wav
+    - audio/26F/{uri}.wav
+    - audio/27M/{uri}.wav
+    - audio/28F/{uri}.wav
+    - audio/29F/{uri}.wav
+    - audio/30F/{uri}.wav
+    - audio/31F/{uri}.wav
+    - audio/32F/{uri}.wav
+    - audio/33F/{uri}.wav
+    - audio/34M/{uri}.wav
+    - audio/35M/{uri}.wav
+    - audio/36M/{uri}.wav
+    - audio/37M/{uri}.wav
+    - audio/38M/{uri}.wav
+    - audio/39F/{uri}.wav
+    - audio/40M/{uri}.wav
+    - audio/41F/{uri}.wav
+    - audio/42M/{uri}.wav
+    - audio/43F/{uri}.wav
+    - audio/44F/{uri}.wav
+    - audio/45M/{uri}.wav
+    - audio/46F/{uri}.wav
+    - audio/47M/{uri}.wav
+    - audio/48F/{uri}.wav
+    - audio/49F/{uri}.wav
+    - audio/50F/{uri}.wav
+    - audio/51M/{uri}.wav
+    - audio/52F/{uri}.wav
+    - audio/53F/{uri}.wav
+    - audio/54F/{uri}.wav
+    - audio/55M/{uri}.wav
+    - audio/56M/{uri}.wav
+    - audio/57F/{uri}.wav
+    - audio/58F/{uri}.wav
+
