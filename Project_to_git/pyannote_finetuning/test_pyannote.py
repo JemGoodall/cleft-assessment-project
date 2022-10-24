@@ -17,17 +17,9 @@ uxtd = get_protocol('MyDatabase.SpeakerDiarization.MyProtocol',
 model_path = 'lightning_logs/version_3/checkpoints/epoch=9-step=3370.ckpt'
 
 # create the pipeline with the pretrained and finetuned model
-# check this if still error
-# https://github.com/pyannote/pyannote-audio/blob/fabe423fb167a6f3fbb2d982a8d940979927919c/pyannote/audio/core/pipeline.py#L58
 pretrained = Pipeline.from_pretrained("pyannote/speaker-diarization@2022.07")
-# pretrained = SpeakerDiarization(segmentation=Model.from_pretrained("pyannote/segmentation"), embedding="speechbrain/spkrec-ecapa-voxceleb")
-# test_model = Model.from_pretrained("pyannote/segmentation")
-# pretrained_model = Model.from_pretrained("pyannote/segmentation")
 finetuned_model = Model.from_pretrained(model_path, strict=False)
-
-# pretrained = SpeakerDiarization(segmentation=pretrained_model, embedding="speechbrain/spkrec-ecapa-voxceleb")
 finetuned = SpeakerDiarization(segmentation=finetuned_model, embedding="speechbrain/spkrec-ecapa-voxceleb")
-
 
 init_params = {
                 "segmentation_onset": 0.58,
@@ -44,28 +36,12 @@ init_params = {
 # give default params to finetuned model
 finetuned = finetuned.instantiate(init_params)
 
-# # optimize the parameters on the finetuned model
-# optimizer = Optimizer(finetuned)
-# print('Optimizing params...')
-# optimizer.tune(list(uxtd.development()),
-#                warm_start=init_params,
-#                n_iterations=20,
-#                show_progress=True)
-#
-# optimized_params = optimizer.best_params
-# print(f'original params: {init_params}\n'
-#       f'optimized_params: {optimized_params}')
-#
-# # assign optimised params to finetuned model
-# finetuned_optimised = finetuned.instantiate(optimized_params)
+#  (pretrained.segmentation,  # pyannote/segmentation@2022.07
+#       pretrained.segmentation_step,  # 0.1
+#       pretrained.embedding,  # from speechbrain/spkrec-ecapa-voxceleb
+#       pretrained.embedding_exclude_overlap,  # True
+#       pretrained.clustering)  #HiddenMarkovModelClustering
 
-'''
- (pretrained.segmentation,  # pyannote/segmentation@2022.07
-      pretrained.segmentation_step,  # 0.1
-      pretrained.embedding,  # from speechbrain/spkrec-ecapa-voxceleb
-      pretrained.embedding_exclude_overlap,  # True
-      pretrained.clustering)  #HiddenMarkovModelClustering
-'''
 
 def make_rttms_file(wav_file, pipeline, outfile_path):
     diarization = pipeline(wav_file, max_speakers=2)
