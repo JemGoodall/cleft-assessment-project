@@ -10,7 +10,6 @@ from pyannote.audio.pipelines import SpeakerDiarization
 
 # initialize matplotlib
 import matplotlib
-
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 from PIL import Image
@@ -135,18 +134,22 @@ init_params = {
 
 def main():
     NAME = 'test'
-    preprocessors = {"cleft_test_files": FileFinder()}
-    cleft = get_protocol('MyDatabase.SpeakerDiarization.MyProtocol',
-                        preprocessors=preprocessors)
+###############################
+# Code for plotting annotation (horizonatal segments)
+# Requires alternative YAML file, kinda hacky, but plot is nicer
 
-    list_of_text_files = list(cleft.test())
-    test_file = list_of_text_files[0]
-    print(f'test_file: {test_file["uri"]}')
+#     preprocessors = {"cleft_test_files": FileFinder()}
+#     cleft = get_protocol('MyDatabase.SpeakerDiarization.MyProtocol',
+#                         preprocessors=preprocessors)
 
-    print('Creating segmentation plots')
-    save_annotation(test_file['annotation'], NAME)
+#     list_of_text_files = list(cleft.test())
+#     test_file = list_of_text_files[0]
+#     print(f'test_file: {test_file["uri"]}')
 
-    sys.exit()
+#     print('Creating segmentation plots')
+#     save_annotation(test_file['annotation'], NAME)
+
+#     sys.exit()
 
 ###############################
 
@@ -154,22 +157,14 @@ def main():
     uxtd = get_protocol('MyDatabase.SpeakerDiarization.MyProtocol',
                         preprocessors=preprocessors)
 
-    print(f'loading model: {model_path}')
-    finetuned = load_model(model_path)
-
-
     # MODEL TO TEST:
     model_path = 'lightning_logs/version_0/checkpoints/epoch=4-step=1685.ckpt'
-    # model_path = 'lightning_logs/version_3/checkpoints/epoch=9-step=3370.ckpt'
-    # model_path = 'lightning_logs/version_2/checkpoints/epoch=18-step=6403.ckpt'
-    NAME = 'test'
 
     print(f'loading model: {model_path}')
     finetuned = load_model(model_path)
 
-
     print(f'getting Local DER...')   # get DER of model on test set
-    # get_local_der(finetuned, uxtd, subset="test", name=NAME)
+    get_local_der(finetuned, uxtd, subset="test", name=NAME)
 
     # make pipeline
     print('Making pipeline..')
@@ -178,38 +173,20 @@ def main():
     print('Instantiating params...')
     finetuned_pipeline = finetuned_pipeline.instantiate(init_params)
 
-    # '''
-    # ------------ TESTING FILE 48F-19D - VALUE ERROR ----- '''
-    # for file in uxtd.test():
-    #     # print(file["uri"])
-    #     if file["uri"] == '48F-019D':
-    #         print('found')
-    #         speech = finetuned_pipeline(file, min_speakers=1, max_speakers=2)
-    #
-    #         save_annotation(annotation=speech, name='pipeline_epoch20_badfile')
-    #
-    # sys.exit()
-    # ''' ----- END OF TEST ------- '''
-
     # print('getting overall DER...')
-    # get_total_der(finetuned_pipeline, uxtd, name=NAME)
+    get_total_der(finetuned_pipeline, uxtd, name=NAME)
 
-    # print('loading pretrained model..')
-    # pretrained = Model.from_pretrained("pyannote/segmentation")
-
-    # test_file = next(uxtd.test())  # load a test file
-    list_of_text_files = list(uxtd.test())
-    test_file = list_of_text_files[2]
-    print(f'test_file: {test_file["uri"]}')
+    test_file = next(uxtd.test())  # load a test file
+    print(f'test_file: {test_file["uri"]}'
     print('Creating segmentation plots of target and prediction...')
     get_graph_inference(test_file, model=finetuned, file_name=NAME)
+          
+    print('loading pretrained model..')
+    pretrained = Model.from_pretrained("pyannote/segmentation")
 
-    # get_graph_inference(test_file, model=pretrained, file_name='pretrained_102')
-    # get_graph_target(test_file)
-    # save_annotation(test_file["annotation"], 'annotation_target')
-
-########################################
-
+    get_graph_inference(test_file, model=pretrained, file_name='pretrained_102')
+    get_graph_target(test_file)
+    save_annotation(test_file["annotation"], 'annotation_target')
 
 if __name__ == '__main__':
     main()
