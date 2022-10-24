@@ -10,19 +10,8 @@ from copy import deepcopy
 import pytorch_lightning as pl
 from pytorch_lightning.loggers import CSVLogger
 from pytorch_lightning.loggers import TensorBoardLogger
-# initialize matplotlib
-import matplotlib
-
-matplotlib.use('Agg')
-from matplotlib import pyplot as plt
-from PIL import Image
 
 import sys
-
-
-# Set up visualisation - crop to 1 min, starting 240s
-# one_minute = Segment(240, 300)
-# notebook.crop = one_minute
 
 # ------- GET DER --------
 def _test(model, protocol, subset="test"):
